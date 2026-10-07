@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Итоговые правки — almiz.kz</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+:root{
+  --ink:#1f2328; --muted:#6a7078; --line:#e6e1d6; --paper:#ffffff;
+  --sand:#f7f4ed; --gold:#b8913a; --gold-l:#d9b866; --dark:#1b1f24; --dark2:#262b31;
+  --red:#a8473a; --green:#3f7a52;
+}
+@page{ size:A4; margin:17mm 16mm 18mm 16mm;
+  @bottom-left{ content:"almiz.kz · Итоговые правки для сайта"; font:500 8pt Manrope, sans-serif; color:#8a9097; }
+  @bottom-right{ content:counter(page); font:700 8pt Manrope, sans-serif; color:#b8913a; }
+}
+@page cover{ margin:0; @bottom-left{content:none} @bottom-right{content:none} }
+*{ box-sizing:border-box; }
+html,body{ margin:0; background:var(--paper); }
+body{ font-family:Manrope, sans-serif; color:var(--ink); font-size:10pt; line-height:1.55;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+/* ---------- cover ---------- */
+.cover{ page:cover; width:210mm; height:297mm; background:var(--dark); color:#eef0f2;
+  padding:24mm 20mm 20mm; display:flex; flex-direction:column; position:relative; overflow:hidden; }
+.cover::after{ content:""; position:absolute; right:-40mm; top:-40mm; width:150mm; height:150mm;
+  border-radius:50%; border:1px solid rgba(217,184,102,.18); }
+.cover::before{ content:""; position:absolute; right:-10mm; top:-10mm; width:90mm; height:90mm;
+  border-radius:50%; border:1px solid rgba(217,184,102,.28); }
+.logo{ font-family:Unbounded, sans-serif; font-weight:700; letter-spacing:.5px; line-height:1; }
+.logo .g{ color:var(--gold-l); } .logo .l{ color:#f2f2ee; }
+.cover .logo{ font-size:30pt; }
+.cover .domain{ margin-top:6mm; font-size:10pt; letter-spacing:3px; text-transform:uppercase; color:#9aa1a8; }
+.cover h1{ font-family:Unbounded, sans-serif; font-weight:600; font-size:28pt; line-height:1.15;
+  margin:26mm 0 5mm; color:#fff; }
+.cover h1 span{ color:var(--gold-l); }
+.cover .lead{ font-size:11.5pt; color:#c3c8ce; max-width:150mm; margin:0; }
+.toc{ margin-top:16mm; display:grid; grid-template-columns:1fr 1fr; gap:0 10mm; }
+.toc div{ display:flex; gap:5mm; align-items:baseline; padding:3.2mm 0; border-bottom:1px solid rgba(255,255,255,.1);
+  font-weight:600; font-size:10.5pt; color:#e9ebee; }
+.toc b{ font-family:Unbounded, sans-serif; font-weight:600; color:var(--gold-l); font-size:9pt; width:8mm; }
+.keyidea{ margin-top:auto; border-left:3px solid var(--gold-l); padding:4mm 0 4mm 6mm; }
+.keyidea .lbl{ font-size:8pt; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-l); font-weight:700; }
+.keyidea p{ margin:2mm 0 0; font-size:12pt; line-height:1.5; color:#f4f5f6; font-weight:500; }
+
+/* ---------- sections ---------- */
+.sec{ margin-top:13mm; }
+.cover + .sec{ margin-top:0; }
+.sec-head{ break-after:avoid; }
+h3 + *{ break-before:avoid; }
+.sec-head{ display:flex; align-items:flex-end; gap:6mm; padding-bottom:5mm; margin-bottom:7mm; border-bottom:2px solid var(--ink); }
+.sec-num{ font-family:Unbounded, sans-serif; font-weight:700; font-size:34pt; line-height:.9; color:var(--gold); }
+.sec-head h2{ font-family:Unbounded, sans-serif; font-weight:600; font-size:17pt; line-height:1.15; margin:0; text-transform:uppercase; letter-spacing:.3px; }
+h3{ font-size:8.5pt; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:800; margin:8mm 0 3mm; break-after:avoid; }
+h3:first-of-type{ margin-top:0; }
+p{ margin:0 0 2.5mm; }
+
+.tasks{ list-style:none; padding:0; margin:0 0 2mm; }
+.tasks li{ position:relative; padding:1.6mm 0 1.6mm 7mm; border-bottom:1px solid var(--line); break-inside:avoid; }
+.tasks li:last-child{ border-bottom:0; }
+.tasks li::before{ content:""; position:absolute; left:0; top:4.1mm; width:3.2mm; height:2px; background:var(--gold); }
+
+.copy{ background:var(--sand); border-left:3px solid var(--gold); padding:5mm 6mm 3mm; margin:0 0 4mm; border-radius:0 2mm 2mm 0; break-inside:avoid; }
+.copy .lbl, .tag{ display:inline-block; font-size:7pt; letter-spacing:1.8px; text-transform:uppercase; font-weight:800; color:var(--gold); margin-bottom:2mm; }
+.copy p{ font-size:10.5pt; line-height:1.6; margin-bottom:2.5mm; }
+.copy .title{ font-family:Unbounded, sans-serif; font-weight:600; font-size:11pt; margin-bottom:2mm; }
+
+.cards{ display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin:0 0 4mm; }
+.cards.three{ grid-template-columns:1fr 1fr 1fr; }
+.card{ border:1px solid var(--line); border-radius:2mm; padding:4.5mm 4.5mm 3.5mm; break-inside:avoid; background:#fff; }
+.card .n{ font-family:Unbounded, sans-serif; font-weight:700; color:var(--gold); font-size:12pt; }
+.card h4{ margin:1.5mm 0 1.5mm; font-size:9.5pt; line-height:1.3; text-transform:uppercase; letter-spacing:.3px; font-weight:800; }
+.card p{ margin:0; color:#444a51; font-size:9.3pt; line-height:1.5; }
+
+.chips{ display:flex; flex-wrap:wrap; align-items:center; gap:2mm; margin:1mm 0 3mm; }
+.chip{ background:var(--dark); color:#fff; padding:1.6mm 3.6mm; border-radius:10mm; font-weight:600; font-size:9pt; }
+.chip.light{ background:var(--sand); color:var(--ink); border:1px solid var(--line); }
+.arrow{ color:var(--gold); font-weight:800; }
+
+.swap{ display:grid; grid-template-columns:1fr 8mm 1fr; align-items:center; border:1px solid var(--line); border-radius:2mm; margin:0 0 3mm; break-inside:avoid; }
+.swap > div{ padding:3.5mm 4.5mm; }
+.swap .was{ color:var(--red); }
+.swap .now{ color:var(--green); font-weight:700; }
+.swap .mid{ text-align:center; color:var(--gold); font-weight:800; padding:0; }
+.swap small{ display:block; font-size:7pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); text-decoration:none; font-weight:700; margin-bottom:.8mm; }
+.swap .was small{ display:block; }
+.swap .was span{ text-decoration:line-through; }
+
+.note{ display:flex; gap:3.5mm; background:#fbf3f1; border:1px solid #efd9d4; border-radius:2mm; padding:3.5mm 4.5mm; margin:0 0 4mm; break-inside:avoid; }
+.note b.ic{ color:var(--red); font-family:Unbounded, sans-serif; }
+.note.info{ background:#f3f6f8; border-color:#dde5ea; }
+.note.info b.ic{ color:#4c6b80; }
+
+.steps{ display:grid; grid-template-columns:repeat(5,1fr); gap:2.5mm; margin:0 0 4mm; }
+.step{ border-top:3px solid var(--gold); background:var(--sand); padding:3mm 3mm 3.5mm; border-radius:0 0 2mm 2mm; break-inside:avoid; }
+.step b{ font-family:Unbounded, sans-serif; color:var(--gold); font-size:11pt; display:block; margin-bottom:1mm; }
+.step span{ font-size:8.8pt; line-height:1.4; display:block; font-weight:600; }
+
+.cta{ background:var(--dark); color:#eef0f2; border-radius:2.5mm; padding:7mm 7mm 6mm; margin:2mm 0 5mm; break-inside:avoid; }
+.cta .lbl{ font-size:7pt; letter-spacing:1.8px; text-transform:uppercase; font-weight:800; color:var(--gold-l); }
+.cta .title{ font-family:Unbounded, sans-serif; font-weight:600; font-size:13pt; margin:2mm 0 2.5mm; color:#fff; }
+.cta p{ margin:0; color:#cfd3d8; font-size:10.5pt; }
+
+.clients{ display:grid; grid-template-columns:repeat(5,1fr); gap:3mm; margin:0 0 3mm; }
+.client{ height:16mm; border:1px solid var(--line); border-radius:2mm; display:flex; align-items:center; justify-content:center;
+  font-weight:800; letter-spacing:.5px; font-size:9.5pt; text-align:center; }
+.client.add{ border-style:dashed; color:var(--muted); font-weight:600; font-size:8pt; }
+
+table{ width:100%; border-collapse:collapse; margin:0 0 4mm; font-size:9.3pt; }
+th{ text-align:left; font-size:7pt; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); font-weight:800; padding:0 3mm 2mm; border-bottom:2px solid var(--ink); }
+td{ padding:3mm; border-bottom:1px solid var(--line); vertical-align:top; }
+tr{ break-inside:avoid; }
+td.obj{ font-weight:700; width:42%; }
+.badge{ display:inline-block; font-size:6.8pt; letter-spacing:1px; text-transform:uppercase; font-weight:800; padding:.6mm 2mm; border-radius:5mm;
+  background:#fff1d6; color:#8a6516; margin-top:1.2mm; }
+.fill{ color:var(--muted); font-style:italic; }
+
+.opts{ display:grid; grid-template-columns:1fr 1fr; gap:2.5mm; margin:0 0 4mm; }
+.opt{ display:flex; gap:3mm; align-items:center; border:1px solid var(--line); border-radius:2mm; padding:3mm 4mm; font-weight:600; break-inside:avoid; }
+.opt i{ width:3.6mm; height:3.6mm; border:1.5px solid var(--gold); border-radius:.8mm; flex:none; }
+
+.logo-demo{ display:flex; align-items:center; gap:6mm; background:var(--dark); border-radius:2mm; padding:5mm 6mm; margin:0 0 3mm; break-inside:avoid; }
+.logo-demo .logo{ font-size:22pt; }
+.logo-demo p{ margin:0; color:#c3c8ce; font-size:9pt; }
+.logo-demo p b{ color:var(--gold-l); }
+
+.idea{ border:2px solid var(--gold); border-radius:2.5mm; padding:6mm 7mm; margin-top:4mm; break-inside:avoid; }
+.idea .lbl{ font-size:7pt; letter-spacing:1.8px; text-transform:uppercase; font-weight:800; color:var(--gold); }
+.idea p{ font-size:12pt; line-height:1.5; font-weight:600; margin:2mm 0 0; }
+.keep{ break-inside:avoid; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <div class="logo"><span class="g">А</span><span class="l">л</span><span class="g">М</span><span class="g">И</span><span class="l">з</span></div>
+  <div class="domain">almiz.kz</div>
+  <h1>Итоговые правки<br>для <span>сайта</span></h1>
+  <p class="lead">Оформление, структура, тексты страниц и форма заявки — всё, что нужно внести на сайт, в одном документе.</p>
+  <div class="toc">
+    <div><b>01</b>Оформление и меню</div>
+    <div><b>05</b>Инженерные услуги и производство</div>
+    <div><b>02</b>Главная страница</div>
+    <div><b>06</b>Объекты</div>
+    <div><b>03</b>Продукция</div>
+    <div><b>07</b>Форма заявки</div>
+    <div><b>04</b>Монтаж</div>
+    <div><b>08</b>Общие правки текста</div>
+  </div>
+  <div class="keyidea">
+    <div class="lbl">Основная мысль сайта</div>
+    <p>Собственное производство, собственные инженеры и своя монтажная бригада. Заказчик может обратиться за отдельной услугой или комплексным выполнением работ.</p>
+  </div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section class="sec">
+  <div class="sec-head"><div class="sec-num">01</div><h2>Оформление<br>и меню</h2></div>
+
+  <h3>Логотип</h3>
+  <ul class="tasks"><li>Увеличить логотип.</li></ul>
+  <div class="logo-demo">
+    <div class="logo"><span class="g">А</span><span class="l">л</span><span class="g">М</span><span class="g">И</span><span class="l">з</span></div>
+    <p>Написание «АлМИз»: буквы <b>А, М, И</b> выделить золотым цветом, <b style="color:#f2f2ee">л</b> и <b style="color:#f2f2ee">з</b> оставить светлыми.</p>
+  </div>
+
+  <h3>Порядок меню</h3>
+  <div class="chips">
+    <span class="chip">Продукция</span><span class="arrow">→</span>
+    <span class="chip">Монтаж</span><span class="arrow">→</span>
+    <span class="chip">Производство</span><span class="arrow">→</span>
+    <span class="chip">Объекты</span><span class="arrow">→</span>
+    <span class="chip">Контакты</span>
+  </div>
+
+  <h3>Общее</h3>
+  <ul class="tasks">
+    <li>Убрать бегущую строку.</li>
+    <li>Основные блоки на главной расположить в том же порядке, что и меню.</li>
+    <li>Заменить фотографии на переданные обработанные снимки.</li>
+  </ul>
+</section>
+
+<!-- ============ 2 ============ -->
+<section class="sec">
+  <div class="sec-head"><div class="sec-num">02</div><h2>Главная<br>страница</h2></div>
+
+  <h3>Текст первого экрана</h3>
+  <div class="copy">
+    <span class="lbl">Текст для сайта</span>
+    <p>Собственное производство и монтаж фасадов. Изготавливаем алюминиевые и оцинкованные фасадные кассеты, комплектующие и металлоконструкции в Алматы. Собственной монтажной бригадой выполняем полный комплекс фасадных работ. Производство и монтаж можно заказать вместе или отдельно.</p>
+  </div>
+
+  <h3>Блок «О компании»</h3>
+  <div class="copy">
+    <span class="lbl">Текст для сайта</span>
+    <p>Алмиз производит металлические фасадные элементы и металлоконструкции для строительных объектов различного назначения.</p>
+    <p>На собственном производстве выполняем раскрой, гибку, сварку и порошковую окраску. Собственные инженеры выполняют обмеры, разрабатывают рабочие чертежи изделий и технические решения. Монтажная бригада выполняет фасадные работы — от установки кронштейнов и утепления до устройства подсистемы, облицовки и доборных элементов.</p>
+    <p>Изготовление, инженерную разработку и монтаж можно заказать отдельно или в составе комплексного заказа.</p>
+  </div>
+
+  <h3>Новый блок «Наши клиенты»</h3>
+  <div class="clients">
+    <div class="client">BAZIS-A</div>
+    <div class="client">Sensata</div>
+    <div class="client">Dial Stroy</div>
+    <div class="client">Nest Stroy</div>
+    <div class="client add">+ добавить</div>
+  </div>
+  <ul class="tasks">
+    <li>Предусмотреть возможность дополнять список названиями и логотипами.</li>
+    <li>Остальных контрагентов передадим позже.</li>
+  </ul>
+</section>
+
+<!-- ============ 3 ============ -->
+<section class="sec">
+  <div class="sec-head"><div class="sec-num">03</div><h2>Продукция</h2></div>
+
+  <h3>Замена направления</h3>
+  <div class="swap">
+    <div class="was"><small>Убрать</small><span>Монтаж фасадов</span></div>
+    <div class="mid">→</div>
+    <div class="now"><small>Добавить</small>Кронштейны и фасадная подсистема</div>
+  </div>
+  <ul class="tasks"><li>Убрать «Монтаж фасадов» из продукции на главной и со страницы «Продукция». Вместо него добавить «Кронштейны и фасадная подсистема».</li></ul>
+
+  <h3>Вводный текст страницы</h3>
+  <div class="copy">
+    <span class="lbl">Текст для сайта</span>
+    <p>Фасадные кассеты, доборные элементы, кронштейны, фасадная подсистема, металлоизделия и конструкции. Изготавливаем отдельные изделия и комплектные партии по размерам и документации заказчика.</p>
+  </div>
+
+  <h3>Три направления продукции</h3>
+  <div class="cards three">
+    <div class="card"><div class="n">01</div><h4>Фасадные кассеты и доборные элементы</h4><p>Алюминиевые и оцинкованные кассеты, откосы, отливы, парапетные накрывки и элементы примыкания.</p></div>
+    <div class="card"><div class="n">02</div><h4>Металлоизделия и конструкции</h4><p>Корзины для кондиционеров, ограждения, металлоконструкции и изделия по индивидуальным чертежам.</p></div>
+    <div class="card"><div class="n">03</div><h4>Кронштейны и фасадная подсистема</h4><p>Кронштейны, направляющие, профили и комплектующие для монтажа фасадной облицовки.</p></div>
+  </div>
+
+  <h3>Страница фасадной продукции</h3>
+  <div class="swap">
+    <div class="was"><small>Было</small><span>Металлические и алюминиевые кассеты</span></div>
+    <div class="mid">→</div>
+    <div class="now"><small>Стало</small>Алюминиевые кассеты</div>
+  </div>
+  <ul class="tasks"><li>«Оцинкованные кассеты» оставить отдельной позицией.</li></ul>
+</section>
+
+<!-- ============ 4 ============ -->
+<section class="sec">
+  <div class="sec-head"><div class="sec-num">04</div><h2>Монтаж</h2></div>
+
+  <div class="note info"><b class="ic">i</b><div>Страница посвящена монтажным услугам. Изготовление не включать в перечень монтажных услуг и не показывать как обязательный этап.</div></div>
+
+  <h3>Вводный текст</h3>
+  <div class="copy">
+    <span class="lbl">Текст для сайта</span>
+    <p>Выполняем фасадные работы собственной монтажной бригадой. Монтаж можно заказать как самостоятельную услугу или вместе с изготовлением изделий на нашем производстве. Работаем со всеми видами фасадной облицовки, включая материалы заказчика.</p>
+  </div>
+
+  <h3>Блок «Наши услуги»</h3>
+  <div class="copy">
+    <span class="lbl">Текст для сайта</span>
+    <p>Выполняем полный комплекс монтажа — от установки кронштейнов, утепления и защитных мембран до устройства подсистемы, облицовки и доборных элементов. Берём на себя весь объём или отдельные этапы работ по проекту.</p>
+  </div>
+
+  <h3>Карточки услуг</h3>
+  <div class="cards">
+    <div class="card"><div class="n">01</div><h4>Комплексный монтаж фасада</h4><p>Все этапы фасадных работ: кронштейны, утепление, защитные мембраны, подсистема, облицовка и примыкания.</p></div>
+    <div class="card"><div class="n">02</div><h4>Утепление и защитные мембраны</h4><p>Монтаж утеплителя и мембран в соответствии с проектным решением.</p></div>
+    <div class="card"><div class="n">03</div><h4>Монтаж фасадной подсистемы</h4><p>Установка кронштейнов, направляющих и крепёжных элементов.</p></div>
+    <div class="card"><div class="n">04</div><h4>Монтаж облицовки</h4><p>Монтаж металлических кассет, фиброцементных плит и других фасадных материалов, включая материалы заказчика.</p></div>
+    <div class="card"><div class="n">05</div><h4>Доборные элементы и металлоконструкции</h4><p>Установка откосов, отливов, парапетных накрывок, элементов примыкания и металлических конструкций.</p></div>
+    <div class="card"><div class="n">06</div><h4>Высотные работы</h4><p>Выполняем монтаж со строительных лесов, фасадных люлек и автовышек. Способ доступа подбираем под условия объекта.</p></div>
+  </div>
+
+  <h3>Блок «Как работаем»</h3>
+  <div class="steps">
+    <div class="step"><b>01</b><span>Изучение объекта и документации</span></div>
+    <div class="step"><b>02</b><span>Согласование объёма, стоимости и сроков</span></div>
+    <div class="step"><b>03</b><span>Подготовка материалов и организация работ</span></div>
+    <div class="step"><b>04</b><span>Выполнение монтажа</span></div>
+    <div class="step"><b>05</b><span>Проверка и сдача работ</span></div>
+  </div>
+
+  <h3>Заключительный блок</h3>
+  <div class="cta">
+    <div class="lbl">Текст для сайта</div>
+    <div class="title">МОНТАЖ ОТДЕЛЬНО ИЛИ В КОМПЛЕКСЕ</div>
+    <p>Закажите монтаж из ваших материалов или изготовление изделий вместе с установкой. Пришлите проект и перечень работ — подготовим расчёт стоимости и сроков.</p>
+  </div>
+
+  <div class="keep">
+  <h3>Правки по всему сайту</h3>
+  <div class="note"><b class="ic">!</b><div>Убрать по всему сайту формулировки, ограничивающие монтаж только изделиями нашего цеха: «монтируем именно то, что производим» и аналогичные.</div></div>
+  <div class="swap">
+    <div class="was"><small>Было</small><span>Кассеты на объектах</span></div>
+    <div class="mid">→</div>
+    <div class="now"><small>Стало</small>Наши монтажные работы</div>
+  </div>
+  <ul class="tasks"><li>На главной использовать сокращённое описание монтажных услуг со ссылкой на страницу «Монтаж».</li></ul>
+  </div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section class="sec">
+  <div class="sec-head"><div class="sec-num">05</div><h2>Инженерные услуги<br>и производство</h2></div>
+
+  <ul class="tasks">
+    <li>На странице «Производство» добавить отдельный блок «Инженерные услуги» перед производственными операциями.</li>
+    <li>На главной разместить краткое упоминание со ссылкой на этот блок.</li>
+  </ul>
+
+  <h3>Блок «Инженерные услуги»</h3>
+  <div class="cards">
+    <div class="card"><h4>Замеры и обмеры объекта</h4><p>Выполняем обмеры фасадов, проёмов и конструкций. Подготавливаем исходные данные для разработки чертежей, изготовления и монтажа.</p></div>
+    <div class="card"><h4>Разработка чертежей и технических решений</h4><p>Собственные инженеры разрабатывают рабочие чертежи изделий, раскладки фасадной облицовки, узлы крепления и монтажные решения по проекту, эскизам или обмерам объекта.</p></div>
+  </div>
+
+  <div class="copy">
+    <span class="lbl">Текст под блоком</span>
+    <p>Замеры и разработка документации — отдельные платные услуги. Их можно заказать самостоятельно или в составе комплексного заказа. Стоимость определяется по объёму и сложности задачи.</p>
+  </div>
+
+  <div class="note"><b class="ic">!</b><div>Не подавать обмеры и разработку чертежей как бесплатную часть расчёта коммерческого предложения.</div></div>
+
+  <h3>Производственный цикл</h3>
+  <div class="chips">
+    <span class="chip light">Разработка документации при необходимости</span><span class="arrow">→</span>
+    <span class="chip">Раскрой</span><span class="arrow">→</span>
+    <span class="chip">Гибка и сварка</span><span class="arrow">→</span>
+    <span class="chip">Порошковая окраска</span><span class="arrow">→</span>
+    <span class="chip">Комплектация и отгрузка</span>
+  </div>
+  <ul class="tasks"><li>Монтаж — по отдельному согласованию.</li></ul>
+</section>
+
+<!-- ============ 6 ============ -->
+<section class="sec">
+  <div class="sec-head"><div class="sec-num">06</div><h2>Объекты</h2></div>
+
+  <h3>Заголовок раздела</h3>
+  <div class="swap">
+    <div class="was"><small>Было</small><span>Объекты, которые работают</span></div>
+    <div class="mid">→</div>
+    <div class="now"><small>Стало</small>Наши объекты</div>
+  </div>
+
+  <h3>Названия и подписи</h3>
+  <table>
+    <thead><tr><th>Объект</th><th>Подпись</th><th>Наше участие</th></tr></thead>
+    <tbody>
+      <tr><td class="obj">Станция метро «Калкаман»</td><td>Алюминиевая облицовка</td><td class="fill">указать</td></tr>
+      <tr><td class="obj">ЖК Viva Park, Усть-Каменогорск</td><td>Корзины для кондиционеров</td><td class="fill">указать</td></tr>
+      <tr><td class="obj">Школа на 900 мест, Алматы, Бостандыкский район, ул. Сатпаева, 90<br><span class="badge">Объект в работе</span></td><td>Ход фасадных работ</td><td class="fill">указать</td></tr>
+      <tr><td class="obj">Парапеты из алюминия</td><td>Отдельная подборка</td><td class="fill">указать</td></tr>
+    </tbody>
+  </table>
+
+  <ul class="tasks">
+    <li>Для каждого объекта указывать фактический объём нашего участия: изготовление, монтаж или изготовление и монтаж.</li>
+  </ul>
+
+  <div class="note info"><b class="ic">i</b><div><b>Школа — объект в работе.</b> Сейчас использовать согласованную подборку процесса без крупных планов рваной изоляции и крепёжных «зонтиков». Фотографии готового фасада добавим после завершения работ.</div></div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section class="sec">
+  <div class="sec-head"><div class="sec-num">07</div><h2>Форма заявки</h2></div>
+
+  <h3>Поле «Направление» — варианты</h3>
+  <div class="opts">
+    <div class="opt"><i></i>Фасадные кассеты и доборные элементы</div>
+    <div class="opt"><i></i>Кронштейны и фасадная подсистема</div>
+    <div class="opt"><i></i>Металлоизделия и конструкции</div>
+    <div class="opt"><i></i>Монтаж</div>
+    <div class="opt"><i></i>Замеры и разработка чертежей</div>
+    <div class="opt"><i></i>Комплексный заказ</div>
+  </div>
+
+  <h3>Вложения</h3>
+  <ul class="tasks"><li>Добавить возможность приложить чертежи, спецификации и фотографии.</li></ul>
+
+  <!-- ============ 8 ============ -->
+  <div class="sec-head" style="margin-top:13mm"><div class="sec-num">08</div><h2>Общие правки<br>текста</h2></div>
+  <ul class="tasks">
+    <li>Сократить повторение фразы «полный цикл производства и свой монтаж».</li>
+    <li>На главной раскрыть все направления, а на отдельных страницах описывать конкретную продукцию или услугу.</li>
+  </ul>
+  <div class="idea">
+    <div class="lbl">Основная мысль сайта</div>
+    <p>Собственное производство, собственные инженеры и своя монтажная бригада. Заказчик может обратиться за отдельной услугой или комплексным выполнением работ.</p>
+  </div>
+</section>
+
+</body>
+</html>
