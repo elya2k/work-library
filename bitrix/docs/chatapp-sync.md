@@ -53,3 +53,4 @@ ChatApp — коннектор: номер WhatsApp / аккаунт Telegram п
 - https://chatapp.online/crm-integrations/bitrix24/b24-whatsapp/
 - https://chatapp.online/ru/help/open-channels-settings/
 - https://www.bitrix24.ru/apps/app/ank26.whats_app24/
+| Ошибка отправки «The recipient's phone number does not have a WhatsApp account» | На номере клиента нет WhatsApp или номер записан неверно (лишняя/не та цифра, 8 вместо +7, номер стационарный). Проверить через wa.me/<номер> или добавив в контакты телефона; исправить номер в карточке контакта и написать снова; если WhatsApp нет — звонок/SMS |
